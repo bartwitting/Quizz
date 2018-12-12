@@ -44,7 +44,12 @@ class FeaturedViewController: UIViewController {
     func updateUI(with q : [Score], diff : String) {
         DispatchQueue.main.async {
             self.highscores = q
-            self.buildUI(diff: diff)
+            if self.highscores.count == 0 {
+                self.highScoreText.text = "No Highscores recorded yet."
+            }
+            else {
+                self.buildUI(diff: diff)
+            }
         }
     }
     

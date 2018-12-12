@@ -33,7 +33,6 @@ class ScoreViewController: UIViewController {
             present(empty, animated: true, completion: nil)
         }
         else {
-            print("Let's Go!!")
             ScoreController.shared.submitScore(userName: nameField.text!, highScore: punten, difficulty: diff)
             nameField.endEditing(true)
             fillUI(diff: diff)
@@ -51,7 +50,12 @@ class ScoreViewController: UIViewController {
     func updateUI(with q : [Score], diff : String) {
         DispatchQueue.main.async {
             self.highscores = q
-            self.buildUI(diff: diff)
+            if self.highscores.count == 0 {
+                self.highScoreText.text = "No Highscores recorded yet."
+            }
+            else {
+                self.buildUI(diff: diff)
+            }
         }
     }
     

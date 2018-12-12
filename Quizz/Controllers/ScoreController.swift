@@ -15,9 +15,7 @@ class ScoreController {
     let baseURL = URL(string: "https://ide50-bartw263.cs50.io:8080/")!
     
     func submitScore(userName : String, highScore : Int, difficulty : String) {
-        print(userName,highScore,difficulty)
         let initialURL = baseURL.appendingPathComponent("\(difficulty)")
-        print(initialURL)
         var request = URLRequest(url: initialURL)
         request.httpMethod = "POST"
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
@@ -29,7 +27,6 @@ class ScoreController {
                 print("error")
                 return
             }
-            print("data", data)
         }
         task.resume()
     }
@@ -38,6 +35,7 @@ class ScoreController {
         let scoresURL = baseURL.appendingPathComponent(difficulty)
         let task = URLSession.shared.dataTask(with: scoresURL) { (data, response, error) in
             let jsonDecoder = JSONDecoder()
+            do {
                 if let data = data,
                     let scores = try? jsonDecoder.decode([Score].self, from: data) {
                     completion(scores)
@@ -46,6 +44,10 @@ class ScoreController {
                     completion(nil)
                     print(difficulty, "probleem met scores")
                 }
+            }
+            catch {
+                print(error)
+            }
         }
         task.resume()
     }
