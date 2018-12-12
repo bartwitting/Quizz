@@ -14,6 +14,7 @@ class ScoreViewController: UIViewController {
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var submitBut: UIButton!
     @IBOutlet weak var highScoreText: UITextView!
+    @IBOutlet weak var submitStack: UIStackView!
     
     var punten : Int!
     var diff : String!
@@ -22,6 +23,7 @@ class ScoreViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         scoreLabel.text = "\(punten!)/10"
+        submitStack.isHidden = false
         fillUI(diff: diff)
         
     }
@@ -36,9 +38,8 @@ class ScoreViewController: UIViewController {
         else {
             ScoreController.shared.submitScore(userName: nameField.text!, highScore: punten, difficulty: diff)
             fillUI(diff: diff)
-            submitBut.isEnabled = false
+            submitStack.isHidden = true
             nameField.endEditing(true)
-            nameField.isEnabled = false
         }
     }
     
@@ -65,13 +66,13 @@ class ScoreViewController: UIViewController {
     func buildUI(diff : String) {
         let highScores = highscores.sorted(by: >)
         var verhaal = """
-        Highscores with difficulty \(diff): \n
+        Top 5 with difficulty \(diff): \n
         
         """
-        for i in 0..<highScores.count {
+        for i in 0...4 {
             let dex = i + 1
             verhaal += """
-            \(dex). \(highscores[i]) \n
+            \(dex). \(highScores[i]) \n
             """
         }
         highScoreText.text = verhaal

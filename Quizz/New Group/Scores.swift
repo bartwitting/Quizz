@@ -20,7 +20,7 @@ struct Score : Codable, CustomStringConvertible {
         return "\(userName)               score: \(score)"
     }
     
-    static func > (lhs : Score, rhs : Score) -> Bool{
+    static func >(lhs : Score, rhs : Score) -> Bool{
         return lhs.score > rhs.score
     }
 }

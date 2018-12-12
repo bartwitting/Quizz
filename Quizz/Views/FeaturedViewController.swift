@@ -62,7 +62,7 @@ class FeaturedViewController: UIViewController {
         for i in 0..<highScores.count {
             let dex = i + 1
             verhaal += """
-            \(dex). \(highscores[i]) \n
+            \(dex). \(highScores[i]) \n
             """
         }
         highScoreText.text = verhaal

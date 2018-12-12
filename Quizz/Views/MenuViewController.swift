@@ -10,28 +10,33 @@ import UIKit
 
 class MenuViewController: UIViewController {
 
+    /// Defining the outlets
     @IBOutlet weak var startBut: UIButton!
     @IBOutlet weak var easyBut: UIButton!
     @IBOutlet weak var mediumBut: UIButton!
     @IBOutlet weak var hardBut: UIButton!
     
+    /// Defining the variables
     var baseUrl = ""
     var difficulty : String = ""
     
+    /// The unwind function from other VC's to return "home"
     @IBAction func unwindToMenu(segue: UIStoryboardSegue) {
     }
     
+    /// Building the app
     override func viewDidLoad() {
         super.viewDidLoad()
         hideButs()
-        
-        // Do any additional setup after loading the view, typically from a nib.
     }
 
+    /// Action when Start button is pressed
     @IBAction func startPressed(_ sender: Any) {
         hideButs()
+        startBut.isEnabled = false
     }
     
+    /// Action when one of the difficulty buttons is pressed
     @IBAction func difButPressed(_ sender: UIButton) {
         switch sender {
         case easyBut:
@@ -50,12 +55,14 @@ class MenuViewController: UIViewController {
         performSegue(withIdentifier: "PlaySegue", sender: nil)
     }
     
+    /// Function to hide the difficulty buttons
     func hideButs() {
         easyBut.isHidden = !easyBut.isHidden
         mediumBut.isHidden = !mediumBut.isHidden
         hardBut.isHidden = !hardBut.isHidden
     }
     
+    /// Function to send the url and difficulty to the next VC
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "PlaySegue" {
             let gameVC = segue.destination as! GameViewController
