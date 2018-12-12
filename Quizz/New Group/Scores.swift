@@ -16,6 +16,10 @@ struct Score : Codable {
         return Int(score)!
     }
     
+    var description : String {
+        return "\(userName) met de score: \(highScore)"
+    }
+    
     static func > (lhs : Score, rhs : Score) -> Bool{
         return lhs.highScore > rhs.highScore
     }
