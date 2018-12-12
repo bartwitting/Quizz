@@ -36,8 +36,8 @@ class ScoreController {
         let task = URLSession.shared.dataTask(with: scoresURL) { (data, response, error) in
             let jsonDecoder = JSONDecoder()
             do {
-                if let data = data,
-                    let scores = try? jsonDecoder.decode([Score].self, from: data) {
+                if let data = data {
+                    let scores = try jsonDecoder.decode([Score].self, from: data)
                     completion(scores)
                 }
                 else {

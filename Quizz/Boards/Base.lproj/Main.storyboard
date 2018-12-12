@@ -339,15 +339,15 @@
                                     <constraint firstAttribute="width" constant="150" id="4J4-R0-e9S"/>
                                     <constraint firstAttribute="height" constant="40" id="K2j-tX-UAL"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=compact-widthClass=compact">
-                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 </variation>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="High Scores:" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="HEn-0d-xUi">
-                                <rect key="frame" x="36" y="272.5" width="303" height="374.5"/>
+                                <rect key="frame" x="36" y="284.5" width="303" height="362.5"/>
                                 <color key="backgroundColor" red="0.0" green="0.38233961" blue="0.79267131980000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -379,6 +379,7 @@
                                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="7gd-GX-FVo"/>
+                                                    <constraint firstAttribute="width" constant="120" id="fkt-2M-kZc"/>
                                                 </constraints>
                                                 <state key="normal" title="Submit Score!">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -387,6 +388,16 @@
                                                 <state key="disabled">
                                                     <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="fkt-2M-kZc"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="heightClass=compact-widthClass=compact">
+                                                    <mask key="constraints">
+                                                        <include reference="fkt-2M-kZc"/>
+                                                    </mask>
+                                                </variation>
                                                 <connections>
                                                     <action selector="startPressed:" destination="Zgj-06-L9Y" eventType="touchUpInside" id="8Fr-jp-9T2"/>
                                                     <action selector="submitPressed:" destination="0Ck-bq-8IM" eventType="touchUpInside" id="Ttw-Rn-Vnk"/>
@@ -398,7 +409,6 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="EIx-5y-unX" secondAttribute="trailing" id="8NS-tf-eqm"/>
-                                    <constraint firstItem="EIx-5y-unX" firstAttribute="leading" secondItem="3Ed-V2-cnW" secondAttribute="leading" id="RSf-WD-hJk"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -407,7 +417,7 @@
                             <constraint firstItem="t8P-MC-LZR" firstAttribute="top" secondItem="ONF-zL-Zu9" secondAttribute="topMargin" id="4uu-3n-eFl"/>
                             <constraint firstAttribute="trailingMargin" secondItem="3Ed-V2-cnW" secondAttribute="trailing" constant="30" id="FW5-Li-RI0"/>
                             <constraint firstAttribute="bottomMargin" secondItem="HEn-0d-xUi" secondAttribute="bottom" constant="20" id="MpL-Kx-QH2"/>
-                            <constraint firstItem="HEn-0d-xUi" firstAttribute="top" secondItem="3Ed-V2-cnW" secondAttribute="bottom" constant="8" id="Qke-Yl-l3A"/>
+                            <constraint firstItem="HEn-0d-xUi" firstAttribute="top" secondItem="3Ed-V2-cnW" secondAttribute="bottom" constant="20" id="Qke-Yl-l3A"/>
                             <constraint firstAttribute="trailingMargin" secondItem="HEn-0d-xUi" secondAttribute="trailing" constant="20" id="TIN-Nf-CHG"/>
                             <constraint firstItem="3Ed-V2-cnW" firstAttribute="top" secondItem="Bgf-2c-s1s" secondAttribute="bottom" constant="15" id="VDa-WT-1nE"/>
                             <constraint firstItem="3Ed-V2-cnW" firstAttribute="leading" secondItem="ONF-zL-Zu9" secondAttribute="leadingMargin" constant="30" id="Yle-Pw-eEk"/>

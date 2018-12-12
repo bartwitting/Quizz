@@ -27,15 +27,18 @@ class ScoreViewController: UIViewController {
     }
     
     @IBAction func submitPressed(_ sender: Any) {
-        if nameField.text == "" {
+        let text = nameField.text ?? ""
+        if text.isEmpty {
             let empty = UIAlertController(title: "Empty Name", message: "You forgot to enter your name", preferredStyle: .alert)
             empty.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
             present(empty, animated: true, completion: nil)
         }
         else {
             ScoreController.shared.submitScore(userName: nameField.text!, highScore: punten, difficulty: diff)
-            nameField.endEditing(true)
             fillUI(diff: diff)
+            submitBut.isEnabled = false
+            nameField.endEditing(true)
+            nameField.isEnabled = false
         }
     }
     
@@ -62,12 +65,13 @@ class ScoreViewController: UIViewController {
     func buildUI(diff : String) {
         let highScores = highscores.sorted(by: >)
         var verhaal = """
-        Highscores with difficulty \(diff):
+        Highscores with difficulty \(diff): \n
         
         """
-        for i in 0...highScores.count {
+        for i in 0..<highScores.count {
+            let dex = i + 1
             verhaal += """
-            \(i). \(highscores[0].description)
+            \(dex). \(highscores[i]) \n
             """
         }
         highScoreText.text = verhaal

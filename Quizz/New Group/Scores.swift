@@ -8,20 +8,20 @@
 
 import Foundation
 
-struct Score : Codable {
+struct Score : Codable, CustomStringConvertible {
     var userName : String
-    var score : String
+    var highScore : String
     
-    var highScore : Int {
-        return Int(score)!
+    var score : Int {
+        return Int(highScore)!
     }
     
     var description : String {
-        return "\(userName) met de score: \(highScore)"
+        return "\(userName)               score: \(score)"
     }
     
     static func > (lhs : Score, rhs : Score) -> Bool{
-        return lhs.highScore > rhs.highScore
+        return lhs.score > rhs.score
     }
 }
 

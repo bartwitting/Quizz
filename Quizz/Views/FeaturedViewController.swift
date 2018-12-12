@@ -56,12 +56,13 @@ class FeaturedViewController: UIViewController {
     func buildUI(diff : String) {
         let highScores = highscores.sorted(by: >)
         var verhaal = """
-        Highscores with difficulty \(diff):
+        Highscores with difficulty \(diff): \n
         
         """
-        for i in 0...highScores.count {
+        for i in 0..<highScores.count {
+            let dex = i + 1
             verhaal += """
-            \(i). \(highscores[0].description)
+            \(dex). \(highscores[i]) \n
             """
         }
         highScoreText.text = verhaal
