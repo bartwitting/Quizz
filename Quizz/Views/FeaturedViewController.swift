@@ -10,16 +10,20 @@ import UIKit
 
 class FeaturedViewController: UIViewController {
 
+    /// Defining outlets
     @IBOutlet weak var segmentBut: UISegmentedControl!
     @IBOutlet weak var highScoreText: UITextView!
     
+    /// Defining variables
     var highscores : [Score] = []
     
+    /// Building the app
     override func viewDidLoad() {
         super.viewDidLoad()
         fillUI(diff: "easy")
     }
     
+    /// Action to process the data picker
     @IBAction func diffPicker(_ sender: AnyObject) {
         switch segmentBut.selectedSegmentIndex {
         case 0:
@@ -33,6 +37,7 @@ class FeaturedViewController: UIViewController {
         }
     }
     
+    /// Function to retrieve data
     func fillUI(diff : String) {
         ScoreController.shared.fetchScores(difficulty: diff) { (highscores) in
             if let highscores = highscores {
@@ -41,6 +46,7 @@ class FeaturedViewController: UIViewController {
         }
     }
     
+    /// Function to check if there is data
     func updateUI(with q : [Score], diff : String) {
         DispatchQueue.main.async {
             self.highscores = q
@@ -53,6 +59,7 @@ class FeaturedViewController: UIViewController {
         }
     }
     
+    /// Fill the highscore textfield with data
     func buildUI(diff : String) {
         let highScores = highscores.sorted(by: >)
         var verhaal = """

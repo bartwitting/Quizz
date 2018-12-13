@@ -9,11 +9,13 @@
 import Foundation
 
 class ScoreController {
-    
+    /// variable to make the functions reachable in other files
     static let shared = ScoreController()
     
+    /// The url van de site
     let baseURL = URL(string: "https://ide50-bartw263.cs50.io:8080/")!
     
+    /// Function to send the scores to my server
     func submitScore(userName : String, highScore : Int, difficulty : String) {
         let initialURL = baseURL.appendingPathComponent("\(difficulty)")
         var request = URLRequest(url: initialURL)
@@ -31,6 +33,7 @@ class ScoreController {
         task.resume()
     }
     
+    /// Fetch the scores from my server
     func fetchScores(difficulty : String, completion: @escaping ([Score]?) -> Void) {
         let scoresURL = baseURL.appendingPathComponent(difficulty)
         let task = URLSession.shared.dataTask(with: scoresURL) { (data, response, error) in

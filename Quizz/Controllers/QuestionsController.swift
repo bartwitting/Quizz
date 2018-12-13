@@ -9,8 +9,10 @@
 import UIKit
 
 class QuestionsController {
+    /// variable to make the functions reachable in other files
     static let shared = QuestionsController()
     
+    /// Fetch the questions from the Trivia API
     func fetchQuestions(link : String, completion: @escaping ([Question]?) -> Void) {
         let baseURL = URL(string: link)!
         let task = URLSession.shared.dataTask(with: baseURL) { (data, response, error) in

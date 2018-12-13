@@ -11,9 +11,7 @@ import HTMLString
 
 class GameViewController: UIViewController {
     
-    var baseUrl : String!
-    var diff : String!
-    
+    /// Defining outlets
     @IBOutlet weak var QLabel: UILabel!
     @IBOutlet weak var ABut: UIButton!
     @IBOutlet weak var BBut: UIButton!
@@ -22,12 +20,15 @@ class GameViewController: UIViewController {
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var progressBar: UIProgressView!
     
-    
+    /// Defining variables
+    var baseUrl : String!
+    var diff : String!
     var score : Int = 0
     var qIndex : Int = 0
     var ques = [Question]()
     var answers : [String] = []
     
+    /// Building the app
     override func viewDidLoad() {
         super.viewDidLoad()
         QuestionsController.shared.fetchQuestions(link: baseUrl) { (ques) in
@@ -37,6 +38,7 @@ class GameViewController: UIViewController {
         }
     }
 
+    /// Filling in the data
     func updateUI(with q : [Question]) {
         DispatchQueue.main.async {
             self.ques = q
@@ -48,12 +50,13 @@ class GameViewController: UIViewController {
             }
         }
     }
-        
+    
+    /// Action when a answer button is pressed
     @IBAction func ButPressed(_ sender: UIButton) {
         ansGiven(answer: String(sender.currentTitle!), but: sender)
     }
     
-    
+    /// Function for the next question
     func nextQ() {
         let currentQ = ques[qIndex]
         answers = [currentQ.goodAns] + currentQ.wrongAns
@@ -70,6 +73,7 @@ class GameViewController: UIViewController {
         progressBar.setProgress(progress, animated: true)
     }
     
+    /// Function which checks the given answer
     func ansGiven(answer: String, but: UIButton) {
         let currentQ = ques[qIndex]
         if answer == currentQ.goodAns {
@@ -84,6 +88,7 @@ class GameViewController: UIViewController {
         }
     }
     
+    /// Function to send the score and difficulty to the next VC
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "FinishSegue" {
             let scoreVC = segue.destination as! ScoreViewController

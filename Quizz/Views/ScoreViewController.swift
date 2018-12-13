@@ -10,24 +10,27 @@ import UIKit
 
 class ScoreViewController: UIViewController {
     
+    /// Defining outlets
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var submitBut: UIButton!
     @IBOutlet weak var highScoreText: UITextView!
     @IBOutlet weak var submitStack: UIStackView!
     
+    /// Defining variables
     var punten : Int!
     var diff : String!
     var highscores : [Score] = []
     
+    /// Building the app
     override func viewDidLoad() {
         super.viewDidLoad()
         scoreLabel.text = "\(punten!)/10"
         submitStack.isHidden = false
         fillUI(diff: diff)
-        
     }
     
+    /// Action when the submit button is clicked
     @IBAction func submitPressed(_ sender: Any) {
         let text = nameField.text ?? ""
         if text.isEmpty {
@@ -43,6 +46,7 @@ class ScoreViewController: UIViewController {
         }
     }
     
+    /// Function to retrieve data
     func fillUI(diff : String) {
         ScoreController.shared.fetchScores(difficulty: diff) { (highscores) in
             if let highscores = highscores {
@@ -51,6 +55,7 @@ class ScoreViewController: UIViewController {
         }
     }
     
+    /// Function to check if there is data
     func updateUI(with q : [Score], diff : String) {
         DispatchQueue.main.async {
             self.highscores = q
@@ -63,6 +68,7 @@ class ScoreViewController: UIViewController {
         }
     }
     
+    /// Fill the highscore textfield with data
     func buildUI(diff : String) {
         let highScores = highscores.sorted(by: >)
         var verhaal = """
@@ -78,8 +84,3 @@ class ScoreViewController: UIViewController {
         highScoreText.text = verhaal
     }
 }
-
-
-
-/*
-*/
