@@ -28,7 +28,7 @@ class GameViewController: UIViewController {
     var ques = [Question]()
     var answers : [String] = []
     
-    /// Building the app
+    /// Building the screen
     override func viewDidLoad() {
         super.viewDidLoad()
         QuestionsController.shared.fetchQuestions(link: baseUrl) { (ques) in
@@ -73,12 +73,25 @@ class GameViewController: UIViewController {
         progressBar.setProgress(progress, animated: true)
     }
     
-    /// Function which checks the given answer
+    /// Function which checks the given answer and sends an alert
     func ansGiven(answer: String, but: UIButton) {
         let currentQ = ques[qIndex]
         if answer == currentQ.goodAns {
             score += 1
+            let alert = UIAlertController(title: "Well Done!", message: "You guessed right, your new score: \(score)/10", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Next Question", style: .cancel, handler: {action in self.prepNext()}))
+            present(alert, animated: true, completion: nil)
         }
+        else {
+            let alert = UIAlertController(title: "Shame!", message: "You guessed wrong", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Next Question", style: .cancel, handler: {action in self.prepNext()}))
+            present(alert, animated: true, completion: nil)
+        }
+        
+    }
+    
+    /// Function to check if next question is possible
+    func prepNext() {
         qIndex += 1
         if qIndex == ques.count {
             performSegue(withIdentifier: "FinishSegue", sender: nil)

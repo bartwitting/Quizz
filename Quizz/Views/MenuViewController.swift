@@ -24,7 +24,7 @@ class MenuViewController: UIViewController {
     @IBAction func unwindToMenu(segue: UIStoryboardSegue) {
     }
     
-    /// Building the app
+    /// Building the screen
     override func viewDidLoad() {
         super.viewDidLoad()
         hideButs()

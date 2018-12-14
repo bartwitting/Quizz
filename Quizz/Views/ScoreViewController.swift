@@ -22,7 +22,7 @@ class ScoreViewController: UIViewController {
     var diff : String!
     var highscores : [Score] = []
     
-    /// Building the app
+    /// Building the screen
     override func viewDidLoad() {
         super.viewDidLoad()
         scoreLabel.text = "\(punten!)/10"

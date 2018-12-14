@@ -17,7 +17,7 @@ class FeaturedViewController: UIViewController {
     /// Defining variables
     var highscores : [Score] = []
     
-    /// Building the app
+    /// Building the screen
     override func viewDidLoad() {
         super.viewDidLoad()
         fillUI(diff: "easy")
