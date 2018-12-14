@@ -1,5 +1,6 @@
 # Quizz
-Gemaakt door: Bart Witting
+##### Gemaakt door: Bart Witting
+###### Zie voor nieuwe dingen onderaan
 Lets do a film quizz!
 
 Hier is de app:<br/>
@@ -27,3 +28,8 @@ The app also works in Landscape<br/>
 ![ResultL](/doc/FillL.png)<br/>
 ![HighscoresL](/doc/Feat1L.png)
 ![HighScoresL](/doc/Feat2L.png)
+
+#### Nieuw toegevoegd:
+Alerts voor als de persoon het goed of fout heeft
+![Goed](/doc/Goed.png)
+![Fout](/doc/Fout.png)
