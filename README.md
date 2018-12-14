@@ -30,6 +30,6 @@ The app also works in Landscape<br/>
 ![HighScoresL](/doc/Feat2L.png)
 
 #### Nieuw toegevoegd:
-Alerts voor als de persoon het goed of fout heeft<br/>
+Alerts voor als de persoon het goed of fout heeft:<br/>
 ![Goed](/doc/Goed.png)
 ![Fout](/doc/Fout.png)
